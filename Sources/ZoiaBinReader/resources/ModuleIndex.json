@@ -40,12 +40,19 @@
                 "position": 5
             }
         },
-        "options": {
-            "lowpass_output": ["on", "off"],
-            "hipass_output": ["off", "on"],
-            "bandpass_output": ["off", "on"],
-            "freq_change": ["smooth", "instant"]
-        }
+        "options": [{
+                "lowpass_output": ["on", "off"]
+            },
+            {
+                "hipass_output": ["off", "on"]
+            },
+            {
+                "bandpass_output": ["off", "on"]
+            },
+            {
+                "freq_change": ["smooth", "instant"]
+            }
+        ]
     },
     "1": {
         "name": "Audio Input",
@@ -68,9 +75,9 @@
                 "position": 1
             }
         },
-        "options": {
+        "options": [{
             "channels": ["stereo", "left", "right"]
-        }
+        }]
     },
     "2": {
         "name": "Audio Output",
@@ -98,10 +105,13 @@
                 "position": 2
             }
         },
-        "options": {
-            "gain_control": ["off", "on"],
-            "channels": ["stereo", "left", "right"]
-        }
+        "options": [{
+                "gain_control": ["off", "on"]
+            },
+            {
+                "channels": ["stereo", "left", "right"]
+            }
+        ]
     },
     "3": {
         "name": "Aliaser",
@@ -129,7 +139,7 @@
                 "position": 2
             }
         },
-        "options": {}
+        "options": []
     },
     "4": {
         "name": "Sequencer",
@@ -352,12 +362,19 @@
                 "position": 41
             }
         },
-        "options": {
-            "number_of_steps": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
-            "num_of_tracks": [1, 2, 3, 4, 5, 6, 7, 8],
-            "restart_jack": ["off", "on"],
-            "behavior": ["loop", "once"]
-        }
+        "options": [{
+                "number_of_steps": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+            },
+            {
+                "num_of_tracks": [1, 2, 3, 4, 5, 6, 7, 8]
+            },
+            {
+                "restart_jack": ["off", "on"]
+            },
+            {
+                "behavior": ["loop", "once"]
+            }
+        ]
     },
     "5": {
         "name": "LFO",
@@ -400,14 +417,25 @@
                 "position": 3
             }
         },
-        "options": {
-            "waveform": ["square", "sine", "triangle", "sawtooth", "ramp", "random"],
-            "swing_control": ["off", "on"],
-            "output": ["0 to 1", "-1 to 1"],
-            "input": ["cv", "tap", "linear_cv"],
-            "phase_input": ["off", "on"],
-            "phase_reset": ["off", "on"]
-        }
+        "options": [{
+                "waveform": ["square", "sine", "triangle", "sawtooth", "ramp", "random"]
+            },
+            {
+                "swing_control": ["off", "on"]
+            },
+            {
+                "output": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "input": ["cv", "tap", "linear_cv"]
+            },
+            {
+                "phase_input": ["off", "on"]
+            },
+            {
+                "phase_reset": ["off", "on"]
+            }
+        ]
     },
     "6": {
         "name": "ADSR",
@@ -470,15 +498,28 @@
                 "position": 9
             }
         },
-        "options": {
-            "retrigger_input": ["off", "on"],
-            "initial_delay": ["off", "on"],
-            "hold_attack_decay": ["off", "on"],
-            "str": ["on", "off"],
-            "immediate_release": ["on", "off"],
-            "hold_sustain_release": ["off", "on"],
-            "time_scale": ["exponent", "linear"]
-        }
+        "options": [{
+                "retrigger_input": ["off", "on"]
+            },
+            {
+                "initial_delay": ["off", "on"]
+            },
+            {
+                "hold_attack_decay": ["off", "on"]
+            },
+            {
+                "str": ["on", "off"]
+            },
+            {
+                "immediate_release": ["on", "off"]
+            },
+            {
+                "hold_sustain_release": ["off", "on"]
+            },
+            {
+                "time_scale": ["exponent", "linear"]
+            }
+        ]
     },
     "7": {
         "name": "VCA",
@@ -516,9 +557,9 @@
                 "position": 4
             }
         },
-        "options": {
+        "options": [{
             "channels": ["1in->1out", "stereo"]
-        }
+        }]
     },
     "8": {
         "name": "Audio Multiply",
@@ -546,7 +587,7 @@
                 "position": 2
             }
         },
-        "options": {}
+        "options": []
     },
     "9": {
         "name": "Bit Crusher",
@@ -574,9 +615,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "fractions": ["off", "on"]
-        }
+        }]
     },
     "10": {
         "name": "Sample and Hold",
@@ -604,9 +645,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "track & hold": ["off", "on"]
-        }
+        }]
     },
     "11": {
         "name": "OD and Distortion",
@@ -639,9 +680,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "model": ["plexi", "germ", "classic", "pushed", "edgy"]
-        }
+        }]
     },
     "12": {
         "name": "Env Follower",
@@ -674,10 +715,13 @@
                 "position": 3
             }
         },
-        "options": {
-            "rise_fall_time": ["off", "on"],
-            "output_scale": ["log", "linear"]
-        }
+        "options": [{
+                "rise_fall_time": ["off", "on"]
+            },
+            {
+                "output_scale": ["log", "linear"]
+            }
+        ]
     },
     "13": {
         "name": "Delay Line",
@@ -715,12 +759,19 @@
                 "position": 4
             }
         },
-        "options": {
-            "max_time": ["1s", "2s", "4s", "8s", "16s", "100ms"],
-            "tap_tempo_in": ["no", "yes"],
-            "interpolation": ["on", "off"],
-            "CV Input": ["exponent", "linear"]
-        }
+        "options": [{
+                "max_time": ["1s", "2s", "4s", "8s", "16s", "100ms"]
+            },
+            {
+                "tap_tempo_in": ["no", "yes"]
+            },
+            {
+                "interpolation": ["on", "off"]
+            },
+            {
+                "CV Input": ["exponent", "linear"]
+            }
+        ]
     },
     "14": {
         "name": "Oscillator",
@@ -753,12 +804,19 @@
                 "position": 3
             }
         },
-        "options": {
-            "waveform": ["sine", "square", "triangle", "sawtooth"],
-            "fm_in": ["off", "on"],
-            "duty_cycle": ["off", "on"],
-            "upsampling": ["none", "2x"]
-        }
+        "options": [{
+                "waveform": ["sine", "square", "triangle", "sawtooth"]
+            },
+            {
+                "fm_in": ["off", "on"]
+            },
+            {
+                "duty_cycle": ["off", "on"]
+            },
+            {
+                "upsampling": ["none", "2x"]
+            }
+        ]
     },
     "15": {
         "name": "Pushbutton",
@@ -776,10 +834,13 @@
                 "position": 1
             }
         },
-        "options": {
-            "action": ["momentary", "latching"],
-            "normally": ["zero", "one"]
-        }
+        "options": [{
+                "action": ["momentary", "latching"]
+            },
+            {
+                "normally": ["zero", "one"]
+            }
+        ]
     },
     "16": {
         "name": "Keyboard",
@@ -1007,9 +1068,9 @@
                 "position": 27
             }
         },
-        "options": {
+        "options": [{
             "#_of_notes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
-        }
+        }]
     },
     "17": {
         "name": "CV Invert",
@@ -1032,7 +1093,7 @@
                 "position": 1
             }
         },
-        "options": {}
+        "options": []
     },
     "18": {
         "name": "Steps",
@@ -1060,7 +1121,7 @@
                 "position": 2
             }
         },
-        "options": {}
+        "options": []
     },
     "19": {
         "name": "Slew Limiter",
@@ -1098,9 +1159,9 @@
                 "position": 4
             }
         },
-        "options": {
+        "options": [{
             "control": ["linked", "separate"]
-        }
+        }]
     },
     "20": {
         "name": "Midi Notes In",
@@ -1273,16 +1334,31 @@
                 "position": 31
             }
         },
-        "options": {
-            "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-            "#_of_outputs": [1, 2, 3, 4, 5, 6, 7, 8],
-            "priority": ["newest", "oldest", "highest", "lowest", "RoundRobin"],
-            "greedy": ["no", "yes"],
-            "velocity_output": ["off", "on"],
-            "low_note": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127],
-            "high_note": [127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-            "trigger_pulse": ["off", "on"]
-        }
+        "options": [{
+                "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+                "#_of_outputs": [1, 2, 3, 4, 5, 6, 7, 8]
+            },
+            {
+                "priority": ["newest", "oldest", "highest", "lowest", "RoundRobin"]
+            },
+            {
+                "greedy": ["no", "yes"]
+            },
+            {
+                "velocity_output": ["off", "on"]
+            },
+            {
+                "low_note": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+            },
+            {
+                "high_note": [127, 126, 125, 124, 123, 122, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+            },
+            {
+                "trigger_pulse": ["off", "on"]
+            }
+        ]
     },
     "21": {
         "name": "Midi CC In",
@@ -1300,11 +1376,16 @@
                 "position": 0
             }
         },
-        "options": {
-            "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-            "controller": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127],
-            "output_range": ["0 to 1", "-1 to 1"]
-        }
+        "options": [{
+                "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+                "controller": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+            },
+            {
+                "output_range": ["0 to 1", "-1 to 1"]
+            }
+        ]
     },
     "22": {
         "name": "Multiplier",
@@ -1362,9 +1443,9 @@
                 "position": 8
             }
         },
-        "options": {
+        "options": [{
             "num_inputs": [2, 3, 4, 5, 6, 7, 8]
-        }
+        }]
     },
     "23": {
         "name": "Compressor",
@@ -1422,13 +1503,22 @@
                 "position": 7
             }
         },
-        "options": {
-            "attack_ctrl": ["off", "on"],
-            "release_ctrl": ["off", "on"],
-            "ratio_ctrl": ["off", "on"],
-            "channels": ["1in->1out", "stereo"],
-            "sidechain": ["internal", "external"]
-        }
+        "options": [{
+                "attack_ctrl": ["off", "on"]
+            },
+            {
+                "release_ctrl": ["off", "on"]
+            },
+            {
+                "ratio_ctrl": ["off", "on"]
+            },
+            {
+                "channels": ["1in->1out", "stereo"]
+            },
+            {
+                "sidechain": ["internal", "external"]
+            }
+        ]
     },
     "24": {
         "name": "Multi Filter",
@@ -1466,9 +1556,9 @@
                 "position": 4
             }
         },
-        "options": {
+        "options": [{
             "filter_shape": ["lowpass", "highpass", "bandpass", "bell", "hi_shelf", "low_shelf"]
-        }
+        }]
     },
     "25": {
         "name": "Plate Reverb",
@@ -1521,7 +1611,7 @@
                 "position": 5
             }
         },
-        "options": {}
+        "options": []
     },
     "26": {
         "name": "Buffer Delay",
@@ -1544,9 +1634,9 @@
                 "position": 1
             }
         },
-        "options": {
+        "options": [{
             "buffer_length": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        }
+        }]
     },
     "27": {
         "name": "All Pass Filter",
@@ -1574,9 +1664,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "#_of_poles": [1, 2, 3, 4, 5, 6, 7, 8]
-        }
+        }]
     },
     "28": {
         "name": "Quantizer",
@@ -1609,10 +1699,13 @@
                 "position": 1
             }
         },
-        "options": {
-            "key_scale_jacks": ["no", "yes"],
-            "scales": ["basic", "extended"]
-        }
+        "options": [{
+                "key_scale_jacks": ["no", "yes"]
+            },
+            {
+                "scales": ["basic", "extended"]
+            }
+        ]
     },
     "29": {
         "name": "Phaser",
@@ -1675,11 +1768,16 @@
                 "position": 6
             }
         },
-        "options": {
-            "channels": ["1in->1out", "1in->2out", "2in->2out"],
-            "control": ["rate", "tap_tempo", "cv_direct"],
-            "number_of_stages": [4, 2, 1, 3, 6, 8]
-        }
+        "options": [{
+                "channels": ["1in->1out", "1in->2out", "2in->2out"]
+            },
+            {
+                "control": ["rate", "tap_tempo", "cv_direct"]
+            },
+            {
+                "number_of_stages": [4, 2, 1, 3, 6, 8]
+            }
+        ]
     },
     "30": {
         "name": "Looper",
@@ -1742,16 +1840,31 @@
                 "position": 6
             }
         },
-        "options": {
-            "max_rec_time": ["1s", "2s", "4s", "8s", "16s", "32s"],
-            "length_edit": ["off", "on"],
-            "playback": ["once", "loop"],
-            "length": ["fixed", "pre_speed"],
-            "hear_while_rec": ["no", "yes"],
-            "play_reverse": ["no", "yes"],
-            "overdub": ["no", "yes"],
-            "stop_play_button": ["no", "yes"]
-        }
+        "options": [{
+                "max_rec_time": ["1s", "2s", "4s", "8s", "16s", "32s"]
+            },
+            {
+                "length_edit": ["off", "on"]
+            },
+            {
+                "playback": ["once", "loop"]
+            },
+            {
+                "length": ["fixed", "pre_speed"]
+            },
+            {
+                "hear_while_rec": ["no", "yes"]
+            },
+            {
+                "play_reverse": ["no", "yes"]
+            },
+            {
+                "overdub": ["no", "yes"]
+            },
+            {
+                "stop_play_button": ["no", "yes"]
+            }
+        ]
     },
     "31": {
         "name": "In Switch",
@@ -1854,9 +1967,9 @@
                 "position": 17
             }
         },
-        "options": {
+        "options": [{
             "num_inputs": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        }
+        }]
     },
     "32": {
         "name": "Out Switch",
@@ -1959,9 +2072,9 @@
                 "position": 17
             }
         },
-        "options": {
+        "options": [{
             "num_outputs": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        }
+        }]
     },
     "33": {
         "name": "Audio In Switch",
@@ -2064,10 +2177,13 @@
                 "position": 17
             }
         },
-        "options": {
-            "num_inputs": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-            "fades": ["on", "off"]
-        }
+        "options": [{
+                "num_inputs": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+                "fades": ["on", "off"]
+            }
+        ]
     },
     "34": {
         "name": "Audio Out Switch",
@@ -2170,10 +2286,13 @@
                 "position": 17
             }
         },
-        "options": {
-            "num_outputs": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-            "fades": ["on", "off"]
-        }
+        "options": [{
+                "num_outputs": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+                "fades": ["on", "off"]
+            }
+        ]
     },
     "35": {
         "name": "Midi Pressure",
@@ -2191,9 +2310,9 @@
                 "position": 0
             }
         },
-        "options": {
+        "options": [{
             "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        }
+        }]
     },
     "36": {
         "name": "Onset Detector",
@@ -2221,9 +2340,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "sensitivity": ["off", "on"]
-        }
+        }]
     },
     "37": {
         "name": "Rhythm",
@@ -2261,9 +2380,9 @@
                 "position": 4
             }
         },
-        "options": {
+        "options": [{
             "done_ctrl": ["off", "on"]
-        }
+        }]
     },
     "38": {
         "name": "Noise",
@@ -2281,7 +2400,7 @@
                 "position": 0
             }
         },
-        "options": {}
+        "options": []
     },
     "39": {
         "name": "Random",
@@ -2304,10 +2423,13 @@
                 "position": 1
             }
         },
-        "options": {
-            "output": ["0 to 1", "-1 to 1"],
-            "new_val_on_trig": ["off", "on"]
-        }
+        "options": [{
+                "output": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "new_val_on_trig": ["off", "on"]
+            }
+        ]
     },
     "40": {
         "name": "Gate",
@@ -2360,12 +2482,19 @@
                 "position": 6
             }
         },
-        "options": {
-            "attack_ctrl": ["off", "on"],
-            "release_ctrl": ["off", "on"],
-            "channels": ["1in->1out", "stereo"],
-            "sidechain": ["internal", "external"]
-        }
+        "options": [{
+                "attack_ctrl": ["off", "on"]
+            },
+            {
+                "release_ctrl": ["off", "on"]
+            },
+            {
+                "channels": ["1in->1out", "stereo"]
+            },
+            {
+                "sidechain": ["internal", "external"]
+            }
+        ]
     },
     "41": {
         "name": "Tremolo",
@@ -2418,11 +2547,16 @@
                 "position": 7
             }
         },
-        "options": {
-            "channels": ["1in->1out", "1in->2out", "2in->2out"],
-            "control": ["rate", "tap_tempo", "cv_direct"],
-            "waveform": ["fender-ish", "vox-ish", "triangle", "sine", "square"]
-        }
+        "options": [{
+                "channels": ["1in->1out", "1in->2out", "2in->2out"]
+            },
+            {
+                "control": ["rate", "tap_tempo", "cv_direct"]
+            },
+            {
+                "waveform": ["fender-ish", "vox-ish", "triangle", "sine", "square"]
+            }
+        ]
     },
     "42": {
         "name": "Tone Control",
@@ -2485,10 +2619,13 @@
                 "position": 9
             }
         },
-        "options": {
-            "channels": ["1in->1out", "stereo"],
-            "num_mid_bands": [1, 2]
-        }
+        "options": [{
+                "channels": ["1in->1out", "stereo"]
+            },
+            {
+                "num_mid_bands": [1, 2]
+            }
+        ]
     },
     "43": {
         "name": "Delay w Mod",
@@ -2551,12 +2688,19 @@
                 "position": 9
             }
         },
-        "options": {
-            "channels": ["1in->1out", "1in->2out", "2in->2out"],
-            "control": ["rate", "tap_tempo"],
-            "type": ["clean", "tape", "old_tape", "bbd"],
-            "tap_ratio": ["1:1", "2:3", "1:2", "1:3", "3:8", "1:4", "3:16", "1:8", "1:16", "1:32"]
-        }
+        "options": [{
+                "channels": ["1in->1out", "1in->2out", "2in->2out"]
+            },
+            {
+                "control": ["rate", "tap_tempo"]
+            },
+            {
+                "type": ["clean", "tape", "old_tape", "bbd"]
+            },
+            {
+                "tap_ratio": ["1:1", "2:3", "1:2", "1:3", "3:8", "1:4", "3:16", "1:8", "1:16", "1:32"]
+            }
+        ]
     },
     "44": {
         "name": "Stompswitch",
@@ -2574,11 +2718,16 @@
                 "position": 0
             }
         },
-        "options": {
-            "stompswitch": ["left", "middle", "right", "ext"],
-            "action": ["momentary", "latching"],
-            "normally": ["zero", "one"]
-        }
+        "options": [{
+                "stompswitch": ["left", "middle", "right", "ext"]
+            },
+            {
+                "action": ["momentary", "latching"]
+            },
+            {
+                "normally": ["zero", "one"]
+            }
+        ]
     },
     "45": {
         "name": "Value",
@@ -2601,9 +2750,9 @@
                 "position": 1
             }
         },
-        "options": {
+        "options": [{
             "output": ["0 to 1", "-1 to 1"]
-        }
+        }]
     },
     "46": {
         "name": "CV Delay",
@@ -2631,9 +2780,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "cv_input": ["exponent", "linear"]
-        }
+        }]
     },
     "47": {
         "name": "CV Loop",
@@ -2686,10 +2835,13 @@
                 "position": 7
             }
         },
-        "options": {
-            "max_rec_time": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-            "length_edit": ["off", "on"]
-        }
+        "options": [{
+                "max_rec_time": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+                "length_edit": ["off", "on"]
+            }
+        ]
     },
     "48": {
         "name": "CV Filter",
@@ -2727,9 +2879,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "control": ["linked", "separate"]
-        }
+        }]
     },
     "49": {
         "name": "Clock Divider",
@@ -2772,9 +2924,9 @@
                 "position": 3
             }
         },
-        "options": {
+        "options": [{
             "input": ["tap", "cv_control"]
-        }
+        }]
     },
     "50": {
         "name": "Comparator",
@@ -2802,9 +2954,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "output": ["0 to 1", "-1 to 1"]
-        }
+        }]
     },
     "51": {
         "name": "CV Rectify",
@@ -2827,7 +2979,7 @@
                 "position": 1
             }
         },
-        "options": {}
+        "options": []
     },
     "52": {
         "name": "Trigger",
@@ -2850,7 +3002,7 @@
                 "position": 1
             }
         },
-        "options": {}
+        "options": []
     },
     "53": {
         "name": "Stereo Spread",
@@ -2893,9 +3045,9 @@
                 "position": 5
             }
         },
-        "options": {
+        "options": [{
             "method": ["mid_side", "haas"]
-        }
+        }]
     },
     "54": {
         "name": "Cport Exp CV In",
@@ -2913,9 +3065,9 @@
                 "position": 0
             }
         },
-        "options": {
+        "options": [{
             "output_range": ["0 to 1", "-1 to 1"]
-        }
+        }]
     },
     "55": {
         "name": "Cport CV Out",
@@ -2933,9 +3085,9 @@
                 "position": 0
             }
         },
-        "options": {
+        "options": [{
             "input_range": ["0 to 1", "-1 to 1"]
-        }
+        }]
     },
     "56": {
         "name": "UI Button",
@@ -2958,10 +3110,13 @@
                 "position": 1
             }
         },
-        "options": {
-            "cv_output": ["disabled", "enabled"],
-            "range": ["basic", "extended"]
-        }
+        "options": [{
+                "cv_output": ["disabled", "enabled"]
+            },
+            {
+                "range": ["basic", "extended"]
+            }
+        ]
     },
     "57": {
         "name": "Audio Panner",
@@ -2999,10 +3154,13 @@
                 "position": 4
             }
         },
-        "options": {
-            "channels": ["1in->2out", "2in->2out"],
-            "pan_type": ["equal_pwr", "-4.5dB", "linear"]
-        }
+        "options": [{
+                "channels": ["1in->2out", "2in->2out"]
+            },
+            {
+                "pan_type": ["equal_pwr", "-4.5dB", "linear"]
+            }
+        ]
     },
     "58": {
         "name": "Pitch Detector",
@@ -3025,7 +3183,7 @@
                 "position": 1
             }
         },
-        "options": {}
+        "options": []
     },
     "59": {
         "name": "Pitch Shifter",
@@ -3053,7 +3211,7 @@
                 "position": 2
             }
         },
-        "options": {}
+        "options": []
     },
     "60": {
         "name": "Midi Note Out",
@@ -3081,10 +3239,13 @@
                 "position": 2
             }
         },
-        "options": {
-            "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-            "velocity_output": ["off", "on"]
-        }
+        "options": [{
+                "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+                "velocity_output": ["off", "on"]
+            }
+        ]
     },
     "61": {
         "name": "Midi CC Out",
@@ -3102,10 +3263,13 @@
                 "position": 0
             }
         },
-        "options": {
-            "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-            "controller": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
-        }
+        "options": [{
+                "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+                "controller": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127]
+            }
+        ]
     },
     "62": {
         "name": "Midi PC Out",
@@ -3128,9 +3292,9 @@
                 "position": 1
             }
         },
-        "options": {
+        "options": [{
             "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        }
+        }]
     },
     "63": {
         "name": "Bit Modulator",
@@ -3158,9 +3322,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "type": ["xor", "and", "or"]
-        }
+        }]
     },
     "64": {
         "name": "Audio Balance",
@@ -3208,9 +3372,9 @@
                 "position": 6
             }
         },
-        "options": {
+        "options": [{
             "stereo": ["mono", "stereo"]
-        }
+        }]
     },
     "65": {
         "name": "Inverter",
@@ -3233,7 +3397,7 @@
                 "position": 1
             }
         },
-        "options": {}
+        "options": []
     },
     "66": {
         "name": "Fuzz",
@@ -3266,9 +3430,9 @@
                 "position": 3
             }
         },
-        "options": {
+        "options": [{
             "model": ["efuzzy", "burly", "scoopy", "ugly"]
-        }
+        }]
     },
     "67": {
         "name": "Ghostverb",
@@ -3321,9 +3485,9 @@
                 "position": 7
             }
         },
-        "options": {
+        "options": [{
             "channels": ["1in->1out", "1in->2out", "stereo"]
-        }
+        }]
     },
     "68": {
         "name": "Cabinet Sim",
@@ -3356,10 +3520,13 @@
                 "position": 3
             }
         },
-        "options": {
-            "channels": ["mono", "stereo"],
-            "type": ["4x12_full", "2x12_dark", "2x12_modern", "1x12", "1x8_lofi", "1x12_vintage", "4x12_hifi"]
-        }
+        "options": [{
+                "channels": ["mono", "stereo"]
+            },
+            {
+                "type": ["4x12_full", "2x12_dark", "2x12_modern", "1x12", "1x8_lofi", "1x12_vintage", "4x12_hifi"]
+            }
+        ]
     },
     "69": {
         "name": "Flanger",
@@ -3427,11 +3594,16 @@
                 "position": 10
             }
         },
-        "options": {
-            "channels": ["1in->1out", "1in->2out", "stereo"],
-            "control": ["rate", "tap_tempo", "cv_direct"],
-            "type": ["1960s", "1970s", "thru_0"]
-        }
+        "options": [{
+                "channels": ["1in->1out", "1in->2out", "stereo"]
+            },
+            {
+                "control": ["rate", "tap_tempo", "cv_direct"]
+            },
+            {
+                "type": ["1960s", "1970s", "thru_0"]
+            }
+        ]
     },
     "70": {
         "name": "Chorus",
@@ -3494,11 +3666,16 @@
                 "position": 9
             }
         },
-        "options": {
-            "channels": ["1in->1out", "1in->2out", "stereo"],
-            "control": ["rate", "tap_tempo", "cv_direct"],
-            "type": ["classic"]
-        }
+        "options": [{
+                "channels": ["1in->1out", "1in->2out", "stereo"]
+            },
+            {
+                "control": ["rate", "tap_tempo", "cv_direct"]
+            },
+            {
+                "type": ["classic"]
+            }
+        ]
     },
     "71": {
         "name": "Vibrato",
@@ -3551,11 +3728,16 @@
                 "position": 7
             }
         },
-        "options": {
-            "channels": ["1in->1out", "1in->2out", "stereo"],
-            "control": ["rate", "tap_tempo", "cv_direct"],
-            "waveform": ["sine", "triangle", "swung_sine", "swung"]
-        }
+        "options": [{
+                "channels": ["1in->1out", "1in->2out", "stereo"]
+            },
+            {
+                "control": ["rate", "tap_tempo", "cv_direct"]
+            },
+            {
+                "waveform": ["sine", "triangle", "swung_sine", "swung"]
+            }
+        ]
     },
     "72": {
         "name": "Env Filter",
@@ -3608,11 +3790,16 @@
                 "position": 7
             }
         },
-        "options": {
-            "channels": ["1in->1out", "1in->2out", "stereo"],
-            "filter_type": ["bpf", "hpf", "lpf"],
-            "direction": ["up", "down"]
-        }
+        "options": [{
+                "channels": ["1in->1out", "1in->2out", "stereo"]
+            },
+            {
+                "filter_type": ["bpf", "hpf", "lpf"]
+            },
+            {
+                "direction": ["up", "down"]
+            }
+        ]
     },
     "73": {
         "name": "Ring Modulator",
@@ -3655,12 +3842,19 @@
                 "position": 5
             }
         },
-        "options": {
-            "waveform": ["sine", "square", "triangle", "sawtooth"],
-            "ext_audio_in": ["off", "on"],
-            "duty_cycle": ["off", "on"],
-            "upsampling": ["none", "2x"]
-        }
+        "options": [{
+                "waveform": ["sine", "square", "triangle", "sawtooth"]
+            },
+            {
+                "ext_audio_in": ["off", "on"]
+            },
+            {
+                "duty_cycle": ["off", "on"]
+            },
+            {
+                "upsampling": ["none", "2x"]
+            }
+        ]
     },
     "74": {
         "name": "Hall Reverb",
@@ -3713,7 +3907,7 @@
                 "position": 5
             }
         },
-        "options": {}
+        "options": []
     },
     "75": {
         "name": "Ping Pong Delay",
@@ -3776,12 +3970,19 @@
                 "position": 9
             }
         },
-        "options": {
-            "channels": ["1in->2out", "stereo"],
-            "control": ["rate", "tap_tempo", "cv_direct"],
-            "type": ["clean", "tape", "old_tape", "bbd"],
-            "tap_ratio": ["1:1", "2:3", "1:2", "1:3", "3:8", "1:4", "3:16", "1:8", "1:16", "1:32"]
-        }
+        "options": [{
+                "channels": ["1in->2out", "stereo"]
+            },
+            {
+                "control": ["rate", "tap_tempo", "cv_direct"]
+            },
+            {
+                "type": ["clean", "tape", "old_tape", "bbd"]
+            },
+            {
+                "tap_ratio": ["1:1", "2:3", "1:2", "1:3", "3:8", "1:4", "3:16", "1:8", "1:16", "1:32"]
+            }
+        ]
     },
     "76": {
         "name": "Audio Mixer",
@@ -3964,11 +4165,16 @@
                 "position": 33
             }
         },
-        "options": {
-            "channels": [2, 3, 4, 5, 6, 7, 8],
-            "stereo": ["mono", "stereo"],
-            "panning": ["off", "on"]
-        }
+        "options": [{
+                "channels": [2, 3, 4, 5, 6, 7, 8]
+            },
+            {
+                "stereo": ["mono", "stereo"]
+            },
+            {
+                "panning": ["off", "on"]
+            }
+        ]
     },
     "77": {
         "name": "CV Flip Flop",
@@ -3991,7 +4197,7 @@
                 "position": 1
             }
         },
-        "options": {}
+        "options": []
     },
     "78": {
         "name": "Diffuser",
@@ -4034,7 +4240,7 @@
                 "position": 5
             }
         },
-        "options": {}
+        "options": []
     },
     "79": {
         "name": "Reverb Lite",
@@ -4077,9 +4283,9 @@
                 "position": 5
             }
         },
-        "options": {
+        "options": [{
             "channels": ["1in->1out", "1in->2out", "stereo"]
-        }
+        }]
     },
     "80": {
         "name": "Room Reverb",
@@ -4132,7 +4338,7 @@
                 "position": 7
             }
         },
-        "options": {}
+        "options": []
     },
     "81": {
         "name": "Pixel",
@@ -4155,9 +4361,9 @@
                 "position": 1
             }
         },
-        "options": {
+        "options": [{
             "control": ["cv", "audio"]
-        }
+        }]
     },
     "82": {
         "name": "Midi Clock In",
@@ -4190,12 +4396,19 @@
                 "position": 3
             }
         },
-        "options": {
-            "clock_out": ["disabled", "enabled"],
-            "run_out": ["disabled", "enabled"],
-            "divider": ["disabled", "enabled"],
-            "beat_modifier": ["1", "2", "3", "4", "6", "12", "1/12", "1/6", "1/4", "1/3", "1/2"]
-        }
+        "options": [{
+                "clock_out": ["disabled", "enabled"]
+            },
+            {
+                "run_out": ["disabled", "enabled"]
+            },
+            {
+                "divider": ["disabled", "enabled"]
+            },
+            {
+                "beat_modifier": ["1", "2", "3", "4", "6", "12", "1/12", "1/6", "1/4", "1/3", "1/2"]
+            }
+        ]
     },
     "83": {
         "name": "Granular",
@@ -4258,12 +4471,19 @@
                 "position": 9
             }
         },
-        "options": {
-            "num_grains": [1, 2, 3, 4, 5, 6, 7, 8],
-            "channels": ["mono", "stereo"],
-            "pos_control": ["cv", "tap_tempo"],
-            "size_control": ["cv", "tap_tempo"]
-        }
+        "options": [{
+                "num_grains": [1, 2, 3, 4, 5, 6, 7, 8]
+            },
+            {
+                "channels": ["mono", "stereo"]
+            },
+            {
+                "pos_control": ["cv", "tap_tempo"]
+            },
+            {
+                "size_control": ["cv", "tap_tempo"]
+            }
+        ]
     },
     "84": {
         "name": "Midi Clock Out",
@@ -4301,12 +4521,19 @@
                 "position": 4
             }
         },
-        "options": {
-            "input": ["tap", "cv_control"],
-            "run_in": ["enabled", "disabled"],
-            "reset_in": ["enabled", "disabled"],
-            "position": ["disabled", "enabled"]
-        }
+        "options": [{
+                "input": ["tap", "cv_control"]
+            },
+            {
+                "run_in": ["enabled", "disabled"]
+            },
+            {
+                "reset_in": ["enabled", "disabled"]
+            },
+            {
+                "position": ["disabled", "enabled"]
+            }
+        ]
     },
     "85": {
         "name": "Tap to CV",
@@ -4339,10 +4566,13 @@
                 "position": 3
             }
         },
-        "options": {
-            "range": ["off", "on"],
-            "output": ["linear", "exponential"]
-        }
+        "options": [{
+                "range": ["off", "on"]
+            },
+            {
+                "output": ["linear", "exponential"]
+            }
+        ]
     },
     "86": {
         "name": "Midi Pitch Bend In",
@@ -4360,9 +4590,9 @@
                 "position": 0
             }
         },
-        "options": {
+        "options": [{
             "midi_channel": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-        }
+        }]
     },
     "87": {
         "name": "Euro CV Out 4",
@@ -4380,11 +4610,16 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "in_range": ["0 to 1", "-1 to 1"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "in_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "88": {
         "name": "Euro CV In 1",
@@ -4402,12 +4637,19 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 1", "-1 to 1"],
-            "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "clock_filter": ["none", "2,8", "1,4", "5,5"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "clock_filter": ["none", "2,8", "1,4", "5,5"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "89": {
         "name": "Euro CV In 2",
@@ -4425,12 +4667,19 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 1", "-1 to 1"],
-            "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "clock_filter": ["none", "2,8", "1,4", "5,5"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "clock_filter": ["none", "2,8", "1,4", "5,5"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "90": {
         "name": "Euro CV In 3",
@@ -4448,12 +4697,19 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 1", "-1 to 1"],
-            "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "clock_filter": ["none", "2,8", "1,4", "5,5"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "clock_filter": ["none", "2,8", "1,4", "5,5"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "91": {
         "name": "Euro CV In 4",
@@ -4471,12 +4727,19 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 1", "-1 to 1"],
-            "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "clock_filter": ["none", "2,8", "1,4", "5,5"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "in_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "clock_filter": ["none", "2,8", "1,4", "5,5"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "92": {
         "name": "Euro Headphone Amp",
@@ -4494,7 +4757,7 @@
                 "position": 0
             }
         },
-        "options": {}
+        "options": []
     },
     "93": {
         "name": "Euro Audio Input 1",
@@ -4512,9 +4775,9 @@
                 "position": 0
             }
         },
-        "options": {
+        "options": [{
             "input_pad": ["6dB", "12dB", "no_pad"]
-        }
+        }]
     },
     "94": {
         "name": "Euro Audio Input 2",
@@ -4532,9 +4795,9 @@
                 "position": 0
             }
         },
-        "options": {
+        "options": [{
             "input_pad": ["6dB", "12dB", "no_pad"]
-        }
+        }]
     },
     "95": {
         "name": "Euro Audio Output 1",
@@ -4552,7 +4815,7 @@
                 "position": 0
             }
         },
-        "options": {}
+        "options": []
     },
     "96": {
         "name": "Euro Audio Output 2",
@@ -4570,7 +4833,7 @@
                 "position": 0
             }
         },
-        "options": {}
+        "options": []
     },
     "97": {
         "name": "Euro Pushbutton 1",
@@ -4588,10 +4851,13 @@
                 "position": 1
             }
         },
-        "options": {
-            "action": ["momentary", "latching"],
-            "normally": ["zero", "one"]
-        }
+        "options": [{
+                "action": ["momentary", "latching"]
+            },
+            {
+                "normally": ["zero", "one"]
+            }
+        ]
     },
     "98": {
         "name": "Euro Pushbutton 2",
@@ -4609,10 +4875,13 @@
                 "position": 1
             }
         },
-        "options": {
-            "action": ["momentary", "latching"],
-            "normally": ["zero", "one"]
-        }
+        "options": [{
+                "action": ["momentary", "latching"]
+            },
+            {
+                "normally": ["zero", "one"]
+            }
+        ]
     },
     "99": {
         "name": "Euro CV Out 1",
@@ -4630,11 +4899,16 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "in_range": ["0 to 1", "-1 to 1"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "in_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "100": {
         "name": "Euro CV Out 2",
@@ -4652,11 +4926,16 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "in_range": ["0 to 1", "-1 to 1"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "in_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "101": {
         "name": "Euro CV Out 3",
@@ -4674,11 +4953,16 @@
                 "position": 0
             }
         },
-        "options": {
-            "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"],
-            "in_range": ["0 to 1", "-1 to 1"],
-            "transpose": ["A", "C"]
-        }
+        "options": [{
+                "out_range": ["0 to 10V", "0 to 5V", "-5 to 5V"]
+            },
+            {
+                "in_range": ["0 to 1", "-1 to 1"]
+            },
+            {
+                "transpose": ["A", "C"]
+            }
+        ]
     },
     "102": {
         "name": "Sampler",
@@ -4731,11 +5015,16 @@
                 "position": 7
             }
         },
-        "options": {
-            "record": ["enabled", "disabled"],
-            "playback": ["trigger", "gate", "loop"],
-            "cv_output": ["off", "on"]
-        }
+        "options": [{
+                "record": ["enabled", "disabled"]
+            },
+            {
+                "playback": ["trigger", "gate", "loop"]
+            },
+            {
+                "cv_output": ["off", "on"]
+            }
+        ]
     },
     "103": {
         "name": "Device Control",
@@ -4763,9 +5052,9 @@
                 "position": 2
             }
         },
-        "options": {
+        "options": [{
             "control": ["bypass", "stomp aux", "perform"]
-        }
+        }]
     },
     "104": {
         "name": "CV Mixer",
@@ -4863,9 +5152,12 @@
                 "position": 16
             }
         },
-        "options": {
-            "num_channels": [1, 2, 3, 4, 5, 6, 7, 8],
-            "levels": ["summing", "average"]
-        }
+        "options": [{
+                "num_channels": [1, 2, 3, 4, 5, 6, 7, 8]
+            },
+            {
+                "levels": ["summing", "average"]
+            }
+        ]
     }
 }

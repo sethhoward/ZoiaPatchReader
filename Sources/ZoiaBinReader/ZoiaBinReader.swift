@@ -1,13 +1,12 @@
 //
 //  FileReader.swift
-//  ZoiaTest
 //
 //  Created by Seth Howard on 6/26/23.
 //
 
 import Foundation
 
-class FileReader {
+public class ZoiaFileReader {
     enum FileReaderError: Error {
         case fileNotFound(message: String)
         case invalidHeader
@@ -62,7 +61,7 @@ class FileReader {
         return starCount * StarField.count.byteLength
     }()
 
-    init(fileURL: URL?) throws {
+    public init(fileURL: URL?) throws {
         guard let fileURL = fileURL else {
             throw FileReaderError.fileNotFound(message: "Invalid URL")
         }
@@ -77,7 +76,7 @@ class FileReader {
     
     /// Begin reading the bin provided to `FileReader`
     /// - Returns:`ZoaiFile` that describe read bin file.
-    func read() throws -> ZoiaFile {
+    public func read() throws -> ZoiaFile {
         do {
             let header = try header()
             let modules = try modules()
@@ -92,7 +91,7 @@ class FileReader {
 }
 
 // MARK: - Private
-extension FileReader {
+extension ZoiaFileReader {
     private enum HeaderField {
         case fileSize
         case name
@@ -302,12 +301,7 @@ extension FileReader {
                 return (colors?[index] ?? ZoiaFile.Color(rawValue: Int(oldColor))) ?? .unknown
             }
             
-            do {
-                return ZoiaFile.Module(index: index, size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, modname: modname, additionalInfo: try ZoiaModuleInfoList.module(key: Int(type)), color:color )
-            }
-            catch let error {
-                throw error
-            }
+            return ZoiaFile.Module(index: index, size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, modname: modname, additionalInfo: ModuleInfo(rawValue: Int(type))!, color:color )
         }
         
         var modules: [ZoiaFile.Module] = []
@@ -378,13 +372,13 @@ extension FileReader {
     }
     
     private func starredElements() -> [ZoiaFile.StarredElement]? {
-        let readHead = HeaderField.size + moduleListSize + connectionFieldSize + pageNameListSize + StarField.count.byteLength
+        var _ = HeaderField.size + moduleListSize + connectionFieldSize + pageNameListSize + StarField.count.byteLength
         
         if starCount > 0 {
             fatalError("Found a star")
         }
         
-      //  print(readHead)
+        //print(readHead)
         
         return nil
     }
@@ -402,101 +396,5 @@ extension FileReader {
         }
         
         return colors
-    }
-}
-
-// MARK: -
-struct ZoiaFile {
-    struct Header {
-        let byteCount: Int
-        let name: String
-        let moduleCount: Int
-    }
-    
-    struct Module: CustomStringConvertible {
-        let index: Int
-        let size: Int
-        let type: Int
-        let unknown: Int
-        let pageNumber: Int
-        let oldColor: Int
-        let gridPosition: Int
-        let userParamCount: Int
-        let version: Int
-        let options: [Int]
-        let additionalOptions: [Int]?
-        let modname: String
-        let additionalInfo: ZoiaModuleInfoList.Module
-        let color: Color
-        
-        var description: String {
-            return """
-            \nsize = \(size)
-            pageNumber = \(pageNumber)
-            gridPosition = \(gridPosition)
-            color = \(color)
-            options = \(options)
-            additionalOption = \(String(describing: additionalOptions))
-            modname = \(modname)
-            additionalInfo = \(additionalInfo)
-            name = \(additionalInfo.name)
-            """
-        }
-    }
-    
-    struct Connection {
-        let sourceIndex: UInt32
-        let sourceBlock: UInt32
-        let destinationIndex: UInt32
-        let destinationBlock: UInt32
-        let connectionStrength: UInt32
-    }
-    
-    struct StarredElement {
-        enum ElementType: Int {
-            case parameter = 0
-            case connection
-        }
-        
-        let type: ElementType
-        let moduleIndex: Int
-        let inputBlockIndex: Int?
-        let midiCCValue: Int
-    }
-    
-    let header: Header
-    let modules: [Module]
-    let connections: [Connection]
-    let pageNames: [String]
-    let starredElements: [StarredElement]?
-    
-    var pages: [Module] {
-        return modules.sorted {
-            if $0.pageNumber == $1.pageNumber {
-                return $0.gridPosition < $1.gridPosition
-            } else {
-                return $0.pageNumber < $1.pageNumber
-            }
-        }
-    }
-}
-
-extension ZoiaFile {
-    enum Color: Int {
-        case unknown = 0
-        case blue
-        case green
-        case yellow
-        case aqua
-        case magenta
-        case white
-        case orange
-        case lime
-        case surf
-        case sky
-        case purple
-        case pink
-        case peach
-        case mango
     }
 }
