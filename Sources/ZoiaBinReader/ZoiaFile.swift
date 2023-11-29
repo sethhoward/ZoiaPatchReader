@@ -15,8 +15,7 @@ public struct ZoiaFile {
         let name: String
         let moduleCount: Int
     }
-    
-    // TODO: DO i need these protocols?
+
     // TODO: I think we want to set what blocks are active on creation
     public struct Module: CustomStringConvertible, Identifiable, Hashable {
         public let id = UUID()
@@ -33,12 +32,18 @@ public struct ZoiaFile {
         let additionalOptions: [Int]?
         let modname: String
         // TODO: Let's get rid of this.
-        public let additionalInfo: ModuleInfo
+        let additionalInfo: ModuleType
         public let color: Color
+        public var name: String {
+            return additionalInfo.name
+        }
+        public var info: String {
+            return additionalInfo.description
+        }
         
         var range: Range<Int>!
         
-        init(index: Int, size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, modname: String, additionalInfo: ModuleInfo, color: Color) {
+        public init(index: Int, size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, modname: String, additionalInfo: ModuleType, color: Color) {
             self.index = index
             self.size = size
             self.type = type
@@ -178,18 +183,13 @@ extension ZoiaFile {
             default:
                 return .white
             }
-            
         }
     }
 }
 
-///
-///
-///
-
 
 // TODO: Consider having this be the API for Modules?
-public enum ModuleInfo: Int {
+public enum ModuleType: Int {
     case sv_filter = 0
     case audio_input
     case audio_output
@@ -296,41 +296,48 @@ public enum ModuleInfo: Int {
     case device_control
     case cv_mixer
     
+    private var index: Int {
+        return self.rawValue
+    }
+    
     // TODO: start using this instead
     public var name: String {
-        return ZoiaModuleInfoList[self.rawValue].name
+        return ZoiaModuleInfoList[index].name
     }
     
     public var cpu: Double {
-        return ZoiaModuleInfoList[self.rawValue].cpu
+        return ZoiaModuleInfoList[index].cpu
     }
     
     var blocks: [ZoiaModuleInfoList.Block] {
-        return ZoiaModuleInfoList[self.rawValue].blocks
+        return ZoiaModuleInfoList[index].blocks
     }
     
     var minBlocks: Int {
-        return ZoiaModuleInfoList[self.rawValue].minBlocks
+        return ZoiaModuleInfoList[index].minBlocks
     }
     
     var maxBlocks: Int {
-        return ZoiaModuleInfoList[self.rawValue].maxBlocks
+        return ZoiaModuleInfoList[index].maxBlocks
+    }
+    
+    var description: String {
+        let cleanedString = ZoiaModuleInfoList[index].description.replacingOccurrences(of: "\n\\s+", with: " ", options: .regularExpression)
+        //cleanedString = ZoiaModuleInfoList[self.rawValue].description.replacingOccurrences(of: "(?m)^\\s+", with: "", options: .regularExpression)
+        return String(cleanedString.dropFirst())
     }
     
     /// Get the options associated to this module. Every module can have a number of options.
     /// - Parameter module: The module to query.
     /// - Returns: Returns  the options un/set by the user.
     func options(for module: ZoiaFile.Module) -> [(module: [String: [ZoiaModuleInfoList.Option]], value: Any)] {
-        let allOptions = ZoiaModuleInfoList[self.rawValue].options
+        let allOptions = ZoiaModuleInfoList[index].options
         
         var options: [(module: [String: [ZoiaModuleInfoList.Option]], value: Any)] = []
         for i in 0..<module.options.count {
-            guard i < allOptions.count else {
-                break
-            }
+            guard let optionValues = allOptions[i].values.first else { break }
             
-            let optionValues = allOptions[i].values.first
-            let selectedValue = optionValues![module.options[i]].value
+            let selectedValue = optionValues[module.options[i]].value
             options.append((module: allOptions[i], value: selectedValue))
         }
         
@@ -338,7 +345,7 @@ public enum ModuleInfo: Int {
     }
     
     func activeBlocks(for module: ZoiaFile.Module) -> [ZoiaModuleInfoList.Block] {
-        // get the available blocks for this module. Combine this with the options Int array will indicate whether or not a block shoudl be displayed.
+        // get the available blocks for this module. Combine this with the options Int array will indicate whether or not a block should be displayed.
         let blockList = self.blocks
         let options = self.options(for: module)
         var blocks: [ZoiaModuleInfoList.Block] = []
@@ -353,9 +360,8 @@ public enum ModuleInfo: Int {
         case .sv_filter:
             blocks += blockList[0...2]
             
-            let offset = 3
             for (index, option) in options.enumerated() where isOn(option.value as? String) {
-                blocks.append(blockList[index + offset])
+                blocks.append(blockList[index + 3])
             }
         
         case .audio_input:
@@ -1081,5 +1087,13 @@ public enum ModuleInfo: Int {
         }
         
         return blocks
+    }
+}
+
+extension Array {
+    mutating func append(_ element: Element, onCondition: () -> Bool) {
+        if onCondition() {
+            self.append(element)
+        }
     }
 }
