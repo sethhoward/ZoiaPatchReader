@@ -335,7 +335,7 @@ public enum ModuleType: Int {
         
         var options: [(module: [String: [ZoiaModuleInfoList.Option]], value: Any)] = []
         for i in 0..<module.options.count {
-            guard let optionValues = allOptions[i].values.first else { break }
+            guard i < allOptions.count, let optionValues = allOptions[i].values.first else { break }
             
             let selectedValue = optionValues[module.options[i]].value
             options.append((module: allOptions[i], value: selectedValue))
