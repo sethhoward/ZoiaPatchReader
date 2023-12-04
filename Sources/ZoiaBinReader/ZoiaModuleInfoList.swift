@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ZoiaModuleInfoList {
+public struct ZoiaModuleInfoList {
     static private var list: [Module] = {
         let list = loadList()
         let sortedKeys = list.keys.sorted { Int($0)! < Int($1)! }
@@ -89,13 +89,13 @@ extension ZoiaModuleInfoList {
         }
     }
     
-    struct Block: Codable {
+    public struct Block: Codable {
         let isDefault: Bool
         let isParam: Bool
         let position: Int
         let name: String
         
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let container: KeyedDecodingContainer<ZoiaModuleInfoList.Block.CodingKeys> = try decoder.container(keyedBy: ZoiaModuleInfoList.Block.CodingKeys.self)
             self.isDefault = try container.decode(Bool.self, forKey: ZoiaModuleInfoList.Block.CodingKeys.isDefault)
             self.isParam = try container.decode(Bool.self, forKey: ZoiaModuleInfoList.Block.CodingKeys.isParam)

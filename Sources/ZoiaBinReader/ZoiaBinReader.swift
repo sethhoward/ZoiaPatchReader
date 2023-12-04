@@ -100,8 +100,8 @@ public final class ZoiaFileReader {
 private extension ZoiaFileReader {
     /*
      A Patch consists of:
-     * `PatchHeaderField` This section defines the size of the patch definition and the patch nam
-     * `ModuleField` Modules This section contains data for each module used in the patch.
+     * `PatchHeaderField` This section defines the size of the patch definition and the patch name
+     * `ModuleField` This section contains data for each module used in the patch.
      * `ConnectionField` This section describes the connections between modules inputs and outputs.
      * `PagesField` Names This section contains the names assigned to page in the patch. This may be empty.
      * `StarField` This section defines information on starred elements inside the patch.
