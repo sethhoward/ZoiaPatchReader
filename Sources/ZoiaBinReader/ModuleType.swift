@@ -1,234 +1,14 @@
 //
-//  ZoiaFile.swift
-//  
+//  ModuleType.swift
 //
-//  Created by Seth Howard on 7/4/23.
+//
+//  Created by Seth Howard on 12/4/23.
 //
 
 import Foundation
-import UIKit
 
-// MARK: -
-public struct ZoiaFile {
-    public struct Header {
-        let byteCount: Int
-        let name: String
-        let moduleCount: Int
-    }
-
-    // TODO: I think we want to set what blocks are active on creation
-    public struct Module: CustomStringConvertible, Identifiable, Hashable {
-        public let id = UUID()
-        let index: Int
-        let size: Int
-        let type: Int
-        let unknown: Int
-        let pageNumber: Int
-        let oldColor: Int
-        public let gridPosition: Int
-        let userParamCount: Int
-        let version: Int
-        let options: [Int]
-        let additionalOptions: [Int]?
-        let modname: String
-        
-        private let additionalInfo: ModuleType
-        
-        public let color: Color
-        public var name: String {
-            return additionalInfo.name
-        }
-        public var additionalDescription: String {
-            return additionalInfo.description
-        }
-        /// Provides a list of the active blocks in the module. Either default or set by the user.
-        public lazy var blocks: [ZoiaModuleInfoList.Block] = {
-            return additionalInfo.activeBlocks(for: self)
-        }()
-        
-        var range: Range<Int> {
-            let start = gridPosition
-            let end = start + additionalInfo.activeBlocks(for: self).count
-            return start..<end
-        }
-        
-        public init(index: Int, size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, modname: String, additionalInfo: ModuleType, color: Color) {
-            self.index = index
-            self.size = size
-            self.type = type
-            self.unknown = unknown
-            self.pageNumber = pageNumber
-            self.oldColor = oldColor
-            self.gridPosition = gridPosition
-            self.userParamCount = userParamCount
-            self.version = version
-            self.options = options
-            self.additionalOptions = additionalOptions
-            self.modname = modname
-            self.additionalInfo = additionalInfo
-            self.color = color
-        }
-    
-        public var description: String {
-            return """
-            \nsize = \(size)
-            pageNumber = \(pageNumber)
-            gridPosition = \(gridPosition)
-            color = \(color)
-            additionalOption = \(String(describing: additionalOptions))
-            modname = \(modname)
-            additionalInfo = \(additionalInfo)
-            options = \(options)
-            blocks = \(additionalInfo.blocks)
-            name = \(additionalInfo.name)
-            """
-        }
-    }
-    
-    public struct Connection {
-        let sourceIndex: UInt32
-        let sourceBlock: UInt32
-        let destinationIndex: UInt32
-        let destinationBlock: UInt32
-        let connectionStrength: UInt32
-    }
-    
-    public struct StarredElement {
-        enum ElementType: Int {
-            case parameter = 0
-            case connection
-        }
-        
-        let type: ElementType
-        let moduleIndex: Int
-        let inputBlockIndex: Int?
-        let midiCCValue: Int
-    }
-    
-    /// defines the size of the patch definition and the patch name.
-    public let header: Header
-    /// contains data for each module used in the patch. Modules consist of blocks and connections.
-    public let modules: [Module]
-    /// connections between modules inputs and outputs.
-    public let connections: [Connection]
-    public let pageNames: [String]
-    /// ZOIA stars can be applied either to individual module's parameters or to connections. Currently unsupported always return nothing.
-    public let starredElements: [StarredElement]?
-    
-    /// Hashmap of keyvalue page number and the cooresponding modules.
-    public var pages: [Int: [Module]] {
-//        let modules = modules.sorted {
-//            if $0.pageNumber == $1.pageNumber {
-//                return $0.gridPosition < $1.gridPosition
-//            } else {
-//                return $0.pageNumber < $1.pageNumber
-//            }
-//        }
-        
-        var pages = [Int: [Module]]()
-        modules.forEach { module in
-            let page: [Module] = {
-                guard let page = pages[module.pageNumber] else {
-                    return []
-                }
-                
-                return page
-            }()
-
-            pages.updateValue(page + [module], forKey: module.pageNumber)
-        }
-        
-        return pages
-    }
-    
-    // TODO: is not currently set.. a hint might lie on page 127.
-    public let isBuro = false
-    
-    /// Returns the modules at a certain index. Modules may overlap each other resulting in more than one module at an index.
-    /// - Parameter index: Where to look for the module.
-    /// - Returns: Module(s) found at index. Modules can be varying sizes and overlap. Returns modules that overlap with the index.
-    public func module(at index: Int) -> [Module]? {
-        return {
-            var modules: [Module] = []
-            for module in self.modules {
-                if module.range.contains(index) {
-                    modules.append(module)
-                }
-            }
-
-            return modules.count > 0 ? modules : nil
-        }()
-    }
-    
-    public var description: String {
-        return """
-        isBuro: \(isBuro),
-        name: \(header.name),
-        size: \(header.byteCount),
-        pages: \(pages.count),
-        page temp: \(pageNames.count),
-        modules: \(modules.count),
-        connections: \(connections.count)
-        """
-    }
-}
-
-extension ZoiaFile {
-    public enum Color: Int {
-        case unknown = 0
-        case blue
-        case green
-        case yellow
-        case aqua
-        case magenta
-        case white
-        case orange
-        case lime
-        case surf
-        case sky
-        case purple
-        case pink
-        case peach
-        case mango
-
-        public var value: UIColor {
-            switch self {
-            case .blue:
-                return .blue
-            case .green:
-                return .green
-            case .yellow:
-                return .yellow
-            case .aqua:
-                return UIColor(red: 0, green: 255/255, blue: 255/255, alpha: 1)
-            case .magenta:
-                return .magenta
-            case .orange:
-                return .orange
-            case .lime:
-                return UIColor(red: 50/255, green: 205/255, blue: 50/255, alpha: 1)
-            case .surf:
-                return UIColor(red: 10/255, green: 255/255, blue: 100/255, alpha: 1)
-            case .sky:
-                return UIColor(red: 135/255, green: 206/255, blue: 235/255, alpha: 1)
-            case .purple:
-                return .purple
-            case .pink:
-                return .systemPink
-            case .peach:
-                return UIColor(red: 255/255, green: 218/255, blue: 185/255, alpha: 1)
-            case .mango:
-                return UIColor(red: 244/255, green: 187/255, blue: 68/255, alpha: 1)
-            default:
-                return .white
-            }
-        }
-    }
-}
-
-
-// TODO: Consider having this be the API for Modules?
-public enum ModuleType: Int {
+// Mark: - ModuleType
+internal enum ModuleType: Int {
     case sv_filter = 0
     case audio_input
     case audio_output
@@ -369,7 +149,7 @@ public enum ModuleType: Int {
     /// Get the options associated to this module. Every module can have a number of options.
     /// - Parameter module: The module to query.
     /// - Returns: Returns  the options un/set by the user.
-    func options(for module: ZoiaFile.Module) -> [(module: [String: [ZoiaModuleInfoList.Option]], value: Any)] {
+    func options(for module: Zoia.Module) -> [(module: [String: [ZoiaModuleInfoList.Option]], value: Any)] {
         let allOptions = ZoiaModuleInfoList[index].options
         
         var options: [(module: [String: [ZoiaModuleInfoList.Option]], value: Any)] = []
@@ -383,7 +163,7 @@ public enum ModuleType: Int {
         return options
     }
     
-    func activeBlocks(for module: ZoiaFile.Module) -> [ZoiaModuleInfoList.Block] {
+    func activeBlocks(for module: Zoia.Module) -> [ZoiaModuleInfoList.Block] {
         // get the available blocks for this module. Combine this with the options Int array will indicate whether or not a block should be displayed.
         let availableBlocks = self.blocks
         let options = self.options(for: module)
