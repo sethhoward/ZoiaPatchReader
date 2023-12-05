@@ -22,9 +22,9 @@ import Foundation
 public struct Zoia {
     // MARK: - Header
     public struct Header {
-        let byteCount: Int
-        let name: String
-        let moduleCount: Int
+        internal let byteCount: Int
+        internal let name: String
+        internal let moduleCount: Int
     }
 
     // MARK: - Module
@@ -54,32 +54,9 @@ public struct Zoia {
             return additionalInfo.description
         }
         /// Provides a list of active  blocks in the module. Either default or set by the user.
-        public lazy var blocks: [ZoiaModuleInfoList.Block] = {
+        public lazy var blocks: [Block] = {
             return additionalInfo.activeBlocks(for: self)
         }()
-        
-        init(index: Int, size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, modname: String, additionalInfo: ModuleType, color: Color) {
-            self.index = index
-            self.size = size
-            self.type = type
-            self.unknown = unknown
-            self.pageNumber = pageNumber
-            self.oldColor = oldColor
-            self.gridPosition = gridPosition
-            self.userParamCount = userParamCount
-            self.version = version
-            self.options = options
-            self.additionalOptions = additionalOptions
-            self.modname = modname
-            self.additionalInfo = additionalInfo
-            self.color = color
-        }
-        
-        internal var range: Range<Int> {
-            let start = gridPosition
-            let end = start + additionalInfo.activeBlocks(for: self).count
-            return start..<end
-        }
         
         public var description: String {
             return """
@@ -95,8 +72,32 @@ public struct Zoia {
             name = \(additionalInfo.name)
             """
         }
+        
+        internal var range: Range<Int> {
+            let start = gridPosition
+            let end = start + additionalInfo.activeBlocks(for: self).count
+            return start..<end
+        }
+        
+        internal init(index: Int, size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, modname: String, additionalInfo: ModuleType, color: Color) {
+            self.index = index
+            self.size = size
+            self.type = type
+            self.unknown = unknown
+            self.pageNumber = pageNumber
+            self.oldColor = oldColor
+            self.gridPosition = gridPosition
+            self.userParamCount = userParamCount
+            self.version = version
+            self.options = options
+            self.additionalOptions = additionalOptions
+            self.modname = modname
+            self.additionalInfo = additionalInfo
+            self.color = color
+        }
     }
     
+    /// d]escribes the connections between modules inputs and outputs.
     public struct Connection {
         let sourceIndex: UInt32
         let sourceBlock: UInt32
@@ -105,7 +106,9 @@ public struct Zoia {
         let connectionStrength: UInt32
     }
     
-    public struct StarredElement {
+    // TODO: currently not supported
+    /// ZOIA stars can be applied either to individual module's parameters or to connections
+    internal struct StarredElement {
         enum ElementType: Int {
             case parameter = 0
             case connection
@@ -125,7 +128,7 @@ public struct Zoia {
     public let connections: [Connection]
     public let pageNames: [String]
     /// ZOIA stars can be applied either to individual module's parameters or to connections. Currently unsupported always return nothing.
-    public let starredElements: [StarredElement]?
+    internal let starredElements: [StarredElement]?
     
     /// Hashmap of keyvalue page number and the cooresponding modules.
     public var pages: [Int: [Module]] {
@@ -145,7 +148,7 @@ public struct Zoia {
         return pages
     }
     
-    // TODO: is not currently set.. a hint might lie on page 127.
+    // TODO: is not currently set.. a hint might lie on page 127 of the module list.
     public let isBuro = false
     
     /// Returns the modules at a certain index. Modules may overlap each other resulting in more than one module at an index.

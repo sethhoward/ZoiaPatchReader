@@ -128,7 +128,7 @@ internal enum ModuleType: Int {
         return ZoiaModuleInfoList[index].cpu
     }
     
-    public var blocks: [ZoiaModuleInfoList.Block] {
+    public var blocks: [Block] {
         return ZoiaModuleInfoList[index].blocks
     }
     
@@ -163,11 +163,11 @@ internal enum ModuleType: Int {
         return options
     }
     
-    func activeBlocks(for module: Zoia.Module) -> [ZoiaModuleInfoList.Block] {
+    func activeBlocks(for module: Zoia.Module) -> [Block] {
         // get the available blocks for this module. Combine this with the options Int array will indicate whether or not a block should be displayed.
         let availableBlocks = self.blocks
         let options = self.options(for: module)
-        var activeBlocks = [ZoiaModuleInfoList.Block]()
+        var activeBlocks = [Block]()
         
         precondition(!availableBlocks.isEmpty, "There are no blocks for \(module)")
         

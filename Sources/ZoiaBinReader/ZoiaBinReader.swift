@@ -105,8 +105,7 @@ private extension ZoiaFileReader {
      * `ConnectionField` This section describes the connections between modules inputs and outputs.
      * `PagesField` Names This section contains the names assigned to page in the patch. This may be empty.
      * `StarField` This section defines information on starred elements inside the patch.
-     ZOIA stars can be applied either to individual module's parameters or to
-     connections. Currently unsupported in this reader.
+            ZOIA stars can be applied either to individual module's parameters or to connections. Currently unsupported in this reader.
      * Since firmware version 1.10 and above, this section defines the (extended) color assigned to each module
      */
     
