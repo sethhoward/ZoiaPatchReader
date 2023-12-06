@@ -22,7 +22,7 @@ let package = Package(
         .target(
             name: "ZoiaBinReader",
             dependencies: [],
-            resources: [.copy("resources/ModuleIndex.json")]),
+            resources: [.copy("Resources/ModuleIndex.json")]),
         .testTarget(
             name: "ZoiaBinReaderTests",
             dependencies: ["ZoiaBinReader"]),

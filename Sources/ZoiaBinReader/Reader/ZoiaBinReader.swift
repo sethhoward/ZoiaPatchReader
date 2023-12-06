@@ -248,7 +248,7 @@ private extension ZoiaFileReader {
     
     /// Reads the Zoia file header found at the beginning of the file the `Patch`.  Defines the size of the patch definition and the patch name.
     /// - Returns: `Header` containing the size, name, and the number of modules.
-    private func header() async throws -> Zoia.Header {
+    private func header() async throws -> Header {
         // Header begins at offset zero in the Zoia patch file.
         return try await withCheckedThrowingContinuation { continuation in
             var readHead = 0
@@ -265,7 +265,7 @@ private extension ZoiaFileReader {
                 return
             }
             
-            continuation.resume(returning: Zoia.Header(byteCount: Int(byteCount * 4), name: name, moduleCount: Int(moduleCount)))
+            continuation.resume(returning: Header(byteCount: Int(byteCount * 4), name: name, moduleCount: Int(moduleCount)))
         }
     }
     
