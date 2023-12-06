@@ -269,7 +269,7 @@ private extension ZoiaFileReader {
         }
     }
     
-    private func modules() async throws -> [Zoia.Module] {
+    private func modules() async throws -> [Module] {
         return try await withCheckedThrowingContinuation { continuation in
             // Track how many bytes we've read for optional fields such as `Additional Options` and `Mod Name`
             var bytesRead = 0
@@ -284,7 +284,7 @@ private extension ZoiaFileReader {
             let colors = colorList()
             
             // Start reading
-            let module: (Int) throws -> Zoia.Module = { [self] index in
+            let module: (Int) throws -> Module = { [self] index in
                 // Each iteration we want to reset the bytes read for the next module
                 defer { bytesRead = 0 }
                 
@@ -338,10 +338,10 @@ private extension ZoiaFileReader {
                     return (colors?[index] ?? Zoia.Color(rawValue: Int(oldColor))) ?? .unknown
                 }
                 
-                return Zoia.Module(size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, customName: modname, additionalInfo: ModuleType(rawValue: Int(type))!, color:color )
+                return Module(size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, customName: modname, additionalInfo: ModuleType(rawValue: Int(type))!, color:color )
             }
             
-            var modules: [Zoia.Module] = []
+            var modules: [Module] = []
             
             do {
                 for i in 0..<moduleCount {
@@ -357,12 +357,12 @@ private extension ZoiaFileReader {
         }
     }
     
-    private func connections() async throws -> [Zoia.Connection] {
+    private func connections() async throws -> [Connection] {
         return try await withCheckedThrowingContinuation { continuation in
             var readHead = moduleListSize + PatchHeaderField.size + ConnectionField.count.byteLength
             
             // Start reading
-            let connection: (Int) throws -> Zoia.Connection = { [self] index in
+            let connection: (Int) throws -> Connection = { [self] index in
                 // Each iteration we want to reset the bytes read for the next module
                 guard
                     // the module index at the source of the connection.
@@ -390,10 +390,10 @@ private extension ZoiaFileReader {
                     throw FileReaderError.invalidConnection(index: index)
                 }
                 
-                return Zoia.Connection(sourceIndex: sourceModuleIndex, sourceBlock: sourceBlockIndex, destinationIndex: destinationModuleIndex, destinationBlock: destinationBlockIndex, connectionStrength: connectionStrength)
+                return Connection(sourceIndex: sourceModuleIndex, sourceBlock: sourceBlockIndex, destinationIndex: destinationModuleIndex, destinationBlock: destinationBlockIndex, connectionStrength: connectionStrength)
             }
             
-            var connections: [Zoia.Connection] = []
+            var connections: [Connection] = []
             
             do {
                 for i in 0..<connectionCount {
@@ -442,13 +442,13 @@ private extension ZoiaFileReader {
         let fileSize = Int(readData(range: range(from: &readHead, to: PatchHeaderField.fileSize.byteLength), as: UInt32.self) ?? 0) * 4
         readHead = PatchHeaderField.size + moduleListSize + connectionFieldSize + pageNameListSize + starListSize + StarField.count.byteLength
         // there is no count.. we just read until we hit the end of the file.
-        var colors: [Zoia.Color]?
+        var colors = [Zoia.Color]()
         while readHead < fileSize {
             let colorValue = Int(readData(range: range(from: &readHead, to: 4), as: UInt32.self) ?? 0)
             let color = Zoia.Color(rawValue: colorValue) ?? .unknown
-            colors?.append(color)
+            colors.append(color)
         }
         
-        return colors
+        return colors.isEmpty ? nil : colors
     }
 }
