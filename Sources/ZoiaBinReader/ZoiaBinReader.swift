@@ -338,7 +338,7 @@ private extension ZoiaFileReader {
                     return (colors?[index] ?? Zoia.Color(rawValue: Int(oldColor))) ?? .unknown
                 }
                 
-                return Zoia.Module(index: index, size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, customName: modname, additionalInfo: ModuleType(rawValue: Int(type))!, color:color )
+                return Zoia.Module(size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, customName: modname, additionalInfo: ModuleType(rawValue: Int(type))!, color:color )
             }
             
             var modules: [Zoia.Module] = []
