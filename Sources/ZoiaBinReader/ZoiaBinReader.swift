@@ -154,11 +154,11 @@ private extension ZoiaFileReader {
             case .options:
                 return 8
             case .additionsOptions(let size):
-                guard Int(size) - 40 > 0 else {
+                guard Int(size) - 56 > 0 else {
                     return 0
                 }
                 
-                return Int(size) - 40
+                return Int(size) - 56
             case .name:
                 return 16
             }
@@ -327,8 +327,8 @@ private extension ZoiaFileReader {
                 }
                 
                 // This field is optional. On older patches, modules did not have names. This will be zeroes if the field is present and the user did not change the default module name.
-                var modname: String {
-                    guard hasRemainingData else { return "" }
+                var modname: String? {
+                    guard hasRemainingData else { return nil }
                     
                     return readData(range: range(from: &readHead, to: ModuleField.name.byteLength), as: String.self) ?? ""
                 }
@@ -338,7 +338,7 @@ private extension ZoiaFileReader {
                     return (colors?[index] ?? Zoia.Color(rawValue: Int(oldColor))) ?? .unknown
                 }
                 
-                return Zoia.Module(index: index, size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, modname: modname, additionalInfo: ModuleType(rawValue: Int(type))!, color:color )
+                return Zoia.Module(index: index, size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, customName: modname, additionalInfo: ModuleType(rawValue: Int(type))!, color:color )
             }
             
             var modules: [Zoia.Module] = []
@@ -346,7 +346,7 @@ private extension ZoiaFileReader {
             do {
                 for i in 0..<moduleCount {
                     let module = try module(Int(i))
-                   // print(module)
+                    print(module)
                     modules.append(module)
                 }
             } catch let error {

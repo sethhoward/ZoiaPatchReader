@@ -43,9 +43,10 @@ public struct Zoia {
         private let oldColor: Int
         private let userParamCount: Int
         private let additionalOptions: [Int]?
-        private let modname: String
         private let additionalInfo: ModuleType
         
+        /// User provided name of the module. This did not exist in earlier Zoia releases.
+        public let customName: String?
         public let color: Color
         public var name: String {
             return additionalInfo.name
@@ -65,7 +66,7 @@ public struct Zoia {
             gridPosition = \(gridPosition)
             color = \(color)
             additionalOption = \(String(describing: additionalOptions))
-            modname = \(modname)
+            modname = \(String(describing: customName))
             additionalInfo = \(additionalInfo)
             options = \(options)
             blocks = \(additionalInfo.blocks)
@@ -79,7 +80,7 @@ public struct Zoia {
             return start..<end
         }
         
-        internal init(index: Int, size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, modname: String, additionalInfo: ModuleType, color: Color) {
+        internal init(index: Int, size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, customName: String?, additionalInfo: ModuleType, color: Color) {
             self.index = index
             self.size = size
             self.type = type
@@ -91,7 +92,7 @@ public struct Zoia {
             self.version = version
             self.options = options
             self.additionalOptions = additionalOptions
-            self.modname = modname
+            self.customName = customName
             self.additionalInfo = additionalInfo
             self.color = color
         }
@@ -235,6 +236,6 @@ extension Zoia {
     
     /// Client helper method.
     public static func mockModule() -> Module {
-        return Module(index: 1, size: 1, type: 1, unknown: 0, pageNumber: 0, oldColor: 1, gridPosition: 0, userParamCount: 0, version: 1, options: [0,0,0,0,0,0,0,0], additionalOptions: nil, modname: "", additionalInfo: .audio_input, color: .lime)
+        return Module(index: 1, size: 1, type: 1, unknown: 0, pageNumber: 0, oldColor: 1, gridPosition: 0, userParamCount: 0, version: 1, options: [0,0,0,0,0,0,0,0], additionalOptions: nil, customName: "Mock", additionalInfo: .audio_input, color: .lime)
     }
 }
