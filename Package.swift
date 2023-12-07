@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ZoiaBinReader",
+    name: "ZoiaPatchReader",
     platforms: [
         .macOS(.v13),
         .iOS(.v16)
@@ -12,19 +12,19 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "ZoiaBinReader",
-            targets: ["ZoiaBinReader"]),
+            name: "ZoiaPatchReader",
+            targets: ["ZoiaPatchReader"]),
     ],
     dependencies: [],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "ZoiaBinReader",
+            name: "ZoiaPatchReader",
             dependencies: [],
             resources: [.copy("Resources/ModuleIndex.json")]),
         .testTarget(
-            name: "ZoiaBinReaderTests",
-            dependencies: ["ZoiaBinReader"]),
+            name: "ZoiaPatchReaderTests",
+            dependencies: ["ZoiaPatchReader"]),
     ]
 )
