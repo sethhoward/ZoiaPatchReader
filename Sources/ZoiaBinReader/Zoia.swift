@@ -18,27 +18,13 @@ import Foundation
 // MARK: - Zoia
 /// The model produced from reading a .bin
 public struct Zoia {
-    // TODO: currently not supported
-    /// ZOIA stars can be applied either to individual module's parameters or to connections
-    internal struct StarredElement {
-        enum ElementType: Int {
-            case parameter = 0
-            case connection
-        }
-        
-        let type: ElementType
-        let moduleIndex: Int
-        let inputBlockIndex: Int?
-        let midiCCValue: Int
-    }
+    // TODO: unsure if needed
+    private let byteSize: Int
     
-    /// defines the size of the patch definition and the patch name.
-   // internal let header: Header
     // TODO: consider whether or not this is needed
     /// contains data for each module used in the patch. Modules consist of blocks and connections.
     internal let modules: [Module]
     /// connections between modules inputs and outputs.
-    public let connections: [Connection]
     internal let pageNames: [String]
     /// ZOIA stars can be applied either to individual module's parameters or to connections. Currently unsupported always return nothing.
     internal let starredElements: [StarredElement]?
@@ -46,8 +32,7 @@ public struct Zoia {
     /// Hashmap of keyvalue page number and the cooresponding modules.
     public let pages: [Page]
     public let patchName: String
-    // TODO: unsure if needed
-    private let byteSize: Int
+    public let connections: [Connection]
     
     // TODO: is not currently set.. a hint might be on page 127 of the module list.
     public let isBuro = false
@@ -155,4 +140,18 @@ internal struct Header {
     internal let byteCount: Int
     internal let name: String
     internal let moduleCount: Int
+}
+
+// TODO: currently not supported
+/// ZOIA stars can be applied either to individual module's parameters or to connections
+internal struct StarredElement {
+    enum ElementType: Int {
+        case parameter = 0
+        case connection
+    }
+    
+    let type: ElementType
+    let moduleIndex: Int
+    let inputBlockIndex: Int?
+    let midiCCValue: Int
 }

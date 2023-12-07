@@ -330,7 +330,13 @@ private extension ZoiaFileReader {
                 var modname: String? {
                     guard hasRemainingData else { return nil }
                     
-                    return readData(range: range(from: &readHead, to: ModuleField.name.byteLength), as: String.self) ?? ""
+                    // Clean up the name so we don't pass along an 'empty' field of '\0'
+                    var name: String = readData(range: range(from: &readHead, to: ModuleField.name.byteLength), as: String.self) ?? ""
+                    name = name.replacingOccurrences(of: "\0", with: "")
+                    
+                    guard !name.isEmpty else { return nil }
+                    
+                    return name
                 }
                 
                 // assuming we do not have a color we match the closest old color to the new.
@@ -425,7 +431,7 @@ private extension ZoiaFileReader {
         }
     }
     
-    private func starredElements() async -> [Zoia.StarredElement]? {
+    private func starredElements() async -> [StarredElement]? {
         return await withCheckedContinuation { continuation in
             var _ = PatchHeaderField.size + moduleListSize + connectionFieldSize + pageNameListSize + StarField.count.byteLength
             
