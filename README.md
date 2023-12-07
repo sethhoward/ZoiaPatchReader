@@ -2,7 +2,7 @@
 
 Reads Zoia saved '.bin' files.
 
-Coming soon: test harness example.
+Test Harness/Demo app: https://github.com/sethhoward/ZoiaReader
 
 Download the package and create some code that will read your Zoia .bin
 
