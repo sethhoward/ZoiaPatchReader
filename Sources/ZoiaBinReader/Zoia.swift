@@ -20,12 +20,6 @@ public let IO_PAGE = 127
 // MARK: - Zoia
 /// The model produced from reading a .bin
 public struct ZoiaPatch {
-    // TODO: unsure if needed
-    private let byteSize: Int
-    
-    // TODO: consider whether or not this is needed
-    /// contains data for each module used in the patch. Modules consist of blocks and connections.
-    internal let modules: [Module]
     /// connections between modules inputs and outputs.
     internal let pageNames: [String]
     /// ZOIA stars can be applied either to individual module's parameters or to connections. Currently unsupported always return nothing.
@@ -43,18 +37,13 @@ public struct ZoiaPatch {
         return """
         isBuro: \(isBuro),
         name: \(patchName),
-        size: \(byteSize),
-        pages: \(pages.count),
-        page temp: \(pageNames.count),
-        modules: \(modules.count),
-        connections: \(connections.count)
+        pages: \(pages.count) \n\(pages),
+        connections: \(connections.count)\n\(connections)
         """
     }
     
     init(header: Header, modules: [Module], connections: [Connection], pageNames: [String], starredElements: [StarredElement]?) {
         self.patchName = header.name
-        self.byteSize = header.byteCount
-        self.modules = modules
         self.connections = connections
         self.pageNames = pageNames
         self.starredElements = starredElements
@@ -75,7 +64,6 @@ public struct ZoiaPatch {
     }
 }
 
-// Mark: - Zoia Color
 extension ZoiaPatch {
     /// Client helper method.
     public static func mockModule() -> Module {
@@ -88,72 +76,4 @@ internal struct Header {
     internal let byteCount: Int
     internal let name: String
     internal let moduleCount: Int
-}
-
-// TODO: currently not supported
-/// ZOIA stars can be applied either to individual module's parameters or to connections
-internal struct StarredElement {
-    enum ElementType: Int {
-        case parameter = 0
-        case connection
-    }
-    
-    let type: ElementType
-    let moduleIndex: Int
-    let inputBlockIndex: Int?
-    let midiCCValue: Int
-}
-
-public enum ZoiaColor: Int {
-    case unknown = 0
-    case blue
-    case green
-    case red
-    case yellow
-    case aqua
-    case magenta
-    case white
-    case orange
-    case lime
-    case surf
-    case sky
-    case purple
-    case pink
-    case peach
-    case mango
-
-    public var value: ZColor {
-        switch self {
-        case .blue:
-            return .blue
-        case .green:
-            return .green
-        case .yellow:
-            return .yellow
-        case .aqua:
-            return ZColor(red: 0, green: 255/255, blue: 255/255, alpha: 1)
-        case .magenta:
-            return .magenta
-        case .orange:
-            return .orange
-        case .lime:
-            return ZColor(red: 50/255, green: 205/255, blue: 50/255, alpha: 1)
-        case .surf:
-            return ZColor(red: 10/255, green: 255/255, blue: 100/255, alpha: 1)
-        case .sky:
-            return ZColor(red: 135/255, green: 206/255, blue: 235/255, alpha: 1)
-        case .purple:
-            return .purple
-        case .pink:
-            return .systemPink
-        case .peach:
-            return ZColor(red: 255/255, green: 218/255, blue: 185/255, alpha: 1)
-        case .mango:
-            return ZColor(red: 244/255, green: 187/255, blue: 68/255, alpha: 1)
-        case .unknown, .white:
-            return .white
-        case .red:
-            return .red
-        }
-    }
 }
