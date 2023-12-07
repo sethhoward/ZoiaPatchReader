@@ -88,8 +88,8 @@ internal enum ModuleType: Int {
     case audio_mixer
     case cv_flip_flop
     case diffuser
-    case reverb_lite = 80
-    case room_reverb
+    case reverb_lite
+    case room_reverb = 80
     case pixel
     case midi_clock_in
     case granular
@@ -98,8 +98,8 @@ internal enum ModuleType: Int {
     case midi_pitch_bend_in
     case euro_cv_out_4
     case euro_cv_in_1
-    case euro_cv_in_2 = 90
-    case euro_cv_in_3
+    case euro_cv_in_2
+    case euro_cv_in_3 = 90
     case euro_cv_in_4
     case euro_headphone_amp
     case euro_audio_input_1
@@ -108,8 +108,8 @@ internal enum ModuleType: Int {
     case euro_audio_output_2
     case euro_pushbutton_1
     case euro_pushbutton_2
-    case euro_cv_out_1 = 100
-    case euro_cv_out_2
+    case euro_cv_out_1
+    case euro_cv_out_2 = 100
     case euro_cv_out_3
     case sampler
     case device_control

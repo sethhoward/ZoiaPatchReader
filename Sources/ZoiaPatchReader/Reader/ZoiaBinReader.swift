@@ -436,7 +436,8 @@ private extension ZoiaFileReader {
             var _ = PatchHeaderField.size + moduleListSize + connectionFieldSize + pageNameListSize + StarField.count.byteLength
             
             if starCount > 0 {
-                fatalError("Found a star")
+                // TODO: save this for debugging star implementation
+               // fatalError("Found a star")
             }
             
             continuation.resume(returning: nil)

@@ -69,6 +69,10 @@ extension ZoiaPatch {
     public static func mockModule() -> Module {
         return Module(size: 1, type: 1, unknown: 0, pageNumber: 0, oldColor: 1, gridPosition: 0, userParamCount: 0, version: 1, options: [0,0,0,0,0,0,0,0], additionalOptions: nil, customName: "Mock", additionalInfo: .audio_input, color: .lime)
     }
+    
+    public static func emptyPatch() -> ZoiaPatch {
+        return ZoiaPatch(header: Header(byteCount: 0, name: "", moduleCount: 0), modules: [], connections: [], pageNames: [], starredElements: [])
+    }
 }
 
 // MARK: - Header
