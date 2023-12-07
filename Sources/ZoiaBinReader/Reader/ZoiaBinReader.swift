@@ -340,8 +340,8 @@ private extension ZoiaFileReader {
                 }
                 
                 // assuming we do not have a color we match the closest old color to the new.
-                var color: ZoiaPatch.Color {
-                    return (colors?[index] ?? ZoiaPatch.Color(rawValue: Int(oldColor))) ?? .unknown
+                var color: ZoiaColor {
+                    return (colors?[index] ?? ZoiaColor(rawValue: Int(oldColor))) ?? .unknown
                 }
                 
                 return Module(size: Int(size), type: Int(type), unknown: Int(unknown), pageNumber: Int(pageNumber), oldColor: Int(oldColor), gridPosition: Int(gridPosition), userParamCount: Int(userParamCount), version: Int(version), options: options.map{ Int($0) }, additionalOptions: additionalOptions.map{ Int($0) }, customName: modname, additionalInfo: ModuleType(rawValue: Int(type))!, color:color )
@@ -443,15 +443,15 @@ private extension ZoiaFileReader {
         }
     }
     
-    private func colorList() -> [ZoiaPatch.Color]? {
+    private func colorList() -> [ZoiaColor]? {
         var readHead = 0
         let fileSize = Int(readData(range: range(from: &readHead, to: PatchHeaderField.fileSize.byteLength), as: UInt32.self) ?? 0) * 4
         readHead = PatchHeaderField.size + moduleListSize + connectionFieldSize + pageNameListSize + starListSize + StarField.count.byteLength
         // there is no count.. we just read until we hit the end of the file.
-        var colors = [ZoiaPatch.Color]()
+        var colors = [ZoiaColor]()
         while readHead < fileSize {
             let colorValue = Int(readData(range: range(from: &readHead, to: 4), as: UInt32.self) ?? 0)
-            let color = ZoiaPatch.Color(rawValue: colorValue) ?? .unknown
+            let color = ZoiaColor(rawValue: colorValue) ?? .unknown
             colors.append(color)
         }
         

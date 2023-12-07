@@ -26,7 +26,7 @@ public struct Module: CustomStringConvertible, Identifiable, Hashable {
     public let gridPosition: Int
     /// User provided name of the module. This did not exist in earlier Zoia releases. eg. "MyModule"
     public let customName: String?
-    public let color: ZoiaPatch.Color
+    public let color: ZoiaColor
     /// The default name provided by Zoia. eg. "Sequencer"
     public var name: String {
         return additionalInfo.name
@@ -61,7 +61,7 @@ public struct Module: CustomStringConvertible, Identifiable, Hashable {
         return start..<end
     }
     
-    internal init(size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, customName: String?, additionalInfo: ModuleType, color: ZoiaPatch.Color) {
+    internal init(size: Int, type: Int, unknown: Int, pageNumber: Int, oldColor: Int, gridPosition: Int, userParamCount: Int, version: Int, options: [Int], additionalOptions: [Int]?, customName: String?, additionalInfo: ModuleType, color: ZoiaColor) {
         self.size = size
         self.type = type
         self.unknown = unknown
