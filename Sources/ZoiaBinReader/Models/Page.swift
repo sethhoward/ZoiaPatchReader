@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Page {
+public struct Page: Hashable {
     /// Custom name if provided by the patch creator.
     public let name: String?
     /// Modules available on this page.
@@ -22,5 +22,11 @@ public struct Page {
         return modules.filter {
             $0.range.contains(position)
         }
+    }
+    
+    public init(name: String?, modules: [Module], number: Int) {
+        self.name = name
+        self.modules = modules
+        self.number = number
     }
 }

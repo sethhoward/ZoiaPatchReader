@@ -15,9 +15,11 @@ import Foundation
     public typealias ZColor = NSColor
 #endif
 
+public let IO_PAGE = 127
+
 // MARK: - Zoia
 /// The model produced from reading a .bin
-public struct Zoia {
+public struct ZoiaPatch {
     // TODO: unsure if needed
     private let byteSize: Int
     
@@ -74,7 +76,7 @@ public struct Zoia {
 }
 
 // Mark: - Zoia Color
-extension Zoia {
+extension ZoiaPatch {
     public enum Color: Int {
         case unknown = 0
         case blue
